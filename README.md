@@ -1,4 +1,4 @@
-# Guadeloupe Earth — préversion française
+# Guadeloupe Earth 
 
 Guadeloupe Earth est une version de BeamNG.Earth limitée à une zone de travail autour de la Guadeloupe. L’interface du mod est maintenant en français par défaut. Cette préversion n’est pas encore une carte finalisée et validée en jeu.
 
