@@ -32,9 +32,7 @@ Les limites actuelles (`15.75..16.60 N`, `-61.95..-60.90 W`) forment un rectangl
 
 ## Installation
 
-Les fichiers du mod BeamNG sont dans `mod/guadeloupe_earth/`. Pour l’installer manuellement comme mod décompressé, copiez ce dossier dans `mods/unpacked/guadeloupe_earth/` du dossier utilisateur BeamNG. L’archive source contient aussi l’application compagnon et les outils de construction ; consultez les documents d’installation avant de les utiliser.
-
-Fermez le jeu avant de remplacer les fichiers. Le serveur compagnon nécessite les dépendances de `server/requirements.txt` et l’extension native `earthfast` compatible avec le système cible. La procédure Windows est détaillée dans [`INSTALLATION_FR.txt`](INSTALLATION_FR.txt).
+La procédure Windows est détaillée dans [`INSTALLATION_FR.txt`](INSTALLATION_FR.txt).
 
 ## Données et caches hors ligne
 
