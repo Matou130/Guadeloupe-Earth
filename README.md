@@ -1,170 +1,50 @@
-# Guadeloupe-Earth
+# Guadeloupe Earth — préversion française
 
-🌴 Guadeloupe Earth
+Guadeloupe Earth est une version de BeamNG.Earth limitée à une zone de travail autour de la Guadeloupe. L’interface du mod est maintenant en français par défaut. Cette préversion n’est pas encore une carte finalisée et validée en jeu.
 
-Explorez la Guadeloupe au volant dans BeamNG.drive !
+## Contenu
 
-Guadeloupe Earth est un projet de mod pour BeamNG.drive qui a pour objectif de rendre l'archipel de la Guadeloupe explorable grâce à la technologie de génération géographique de BeamNG.Earth.
+- Une zone géographique commune définie dans `server/guadeloupe_region.py` et reprise dans les scripts Lua et Vue.
+- Un filtrage des demandes de terrain, d’itinéraires, de tuiles cartographiques et de données géographiques hors de cette zone.
+- Des lieux enregistrés pour Pointe-à-Pitre, Basse-Terre, Capesterre-Belle-Eau, l’aéroport Pôle Caraïbes, Saint-François, Deshaies, Grand-Bourg, Terre-de-Haut et La Désirade.
+- En Guadeloupe, les bâtiments utilisent les emprises IGN BD TOPO, avec les hauteurs, étages et matériaux disponibles. Les altitudes et largeurs de chaussée IGN sont utilisées quand elles existent et correspondent aux segments générés. Les cellules téléchargées restent disponibles hors ligne ; Overture sert de secours pour les bâtiments si l’IGN ne répond pas au premier téléchargement.
+- Au sol, les photos aériennes IGN BD ORTHO de Guadeloupe remplacent les images satellite moins détaillées lorsqu’elles sont disponibles. Elles sont téléchargées à la demande et conservées dans le cache hors ligne.
+- Une carte centrée sur la Guadeloupe, affichant par défaut les routes et les noms de lieux. Son zoom s’arrête à la résolution native des couches cartographiques pour éviter les agrandissements flous ; la carte montre aussi les îles et la mer autour de la zone de conduite.
+- Les emprises de bâtiments ordinaires qui croisent une route sont écartées pour éviter de bloquer la chaussée ; les ponts reconnus, les canopies étroites et les portails de tunnel gardent leur traitement dédié.
+- Des caches locaux pour les téléchargements, le relief, les données cartographiques et les tuiles générées.
+- Les vérifications de mises à jour amont et l’ancien annuaire public BeamNG.Earth sont désactivés.
 
-Le but est de permettre aux joueurs de découvrir les routes, les paysages, les villes, les villages et les reliefs de la Guadeloupe directement dans le jeu.
+## Langue et connexion
 
-Le projet est en développement et évolue progressivement grâce aux tests, aux retours et aux contributions de la communauté.
+Les menus, réglages, carte, page d’accueil, barre d’état et messages principaux du mod s’affichent en français. La langue du jeu n’a pas besoin d’être modifiée.
 
-🗺️ Le projet
+Dans **Pause → Mods → Guadeloupe Earth → Monde**, le réglage **Connexion Internet** propose trois boutons :
 
-Guadeloupe Earth vise à couvrir l'ensemble de l'archipel :
+- **Automatique** : utilise Internet lorsque la connexion est disponible et revient aux données déjà en cache si elle ne l’est pas.
+- **En ligne** : autorise le téléchargement des données manquantes. Si la connexion est indisponible, le mod continue avec les données en cache lorsque c’est possible.
+- **Hors ligne** : bloque les nouvelles requêtes Internet et utilise uniquement les données déjà téléchargées.
 
-Grande-Terre
+Le réglage est conservé entre les sessions. En mode hors ligne, les zones jamais téléchargées peuvent rester vides ou incomplètes. Le cache ne précharge pas automatiquement tout l’archipel.
 
-Basse-Terre
+## Limite géographique
 
-Marie-Galante
+Les limites actuelles (`15.75..16.60 N`, `-61.95..-60.90 W`) forment un rectangle de travail, et non une frontière côtière ou administrative officielle. Elles incluent la mer entre les îles et des zones au large. Les coordonnées de départ sont indicatives et n’ont pas toutes été alignées sur des voies vérifiées.
 
-Les Saintes
+## Installation
 
-La Désirade
+Les fichiers du mod BeamNG sont dans `mod/guadeloupe_earth/`. Pour l’installer manuellement comme mod décompressé, copiez ce dossier dans `mods/unpacked/guadeloupe_earth/` du dossier utilisateur BeamNG. L’archive source contient aussi l’application compagnon et les outils de construction ; consultez les documents d’installation avant de les utiliser.
 
-Petite-Terre
+Fermez le jeu avant de remplacer les fichiers. Le serveur compagnon nécessite les dépendances de `server/requirements.txt` et l’extension native `earthfast` compatible avec le système cible. La procédure Windows est détaillée dans [`INSTALLATION_FR.txt`](INSTALLATION_FR.txt).
 
-Les autres dépendances géographiques pertinentes
+## Données et caches hors ligne
 
-L'ambition est de proposer un environnement aussi vaste et fidèle que possible, sans se limiter à une petite carte construite manuellement.
+Le serveur réutilise les données téléchargées et les tuiles de routes générées entre les sessions. Les caches sur disque n’ont pas de limite logicielle par défaut ; l’espace disque disponible reste la limite pratique. Les caches mémoire restent bornés pour préserver la stabilité. Hors ligne, seules les données déjà présentes sur l’ordinateur sont disponibles.
 
-🚗 Fonctionnalités et objectifs
+## Limites de cette préversion
 
-Technologie de génération
+- Cette archive ne contient pas de mosaïque d’orthophotos préinstallée, de masque côtier ni de jeu complet de routes et de végétation. Les photos IGN et les bâtiments IGN sont récupérés à la demande ; ils restent en cache ensuite. Le relief détaillé et les routes restent dépendants des jeux de données disponibles.
+- Les algorithmes géométriques génériques restent présents, mais les demandes de données sont limitées par la zone Guadeloupe.
+- La validation en jeu, le test du moteur Lua, le multijoueur BeamMP et les performances restent à confirmer.
+- Les neuf lieux nommés sont des destinations dynamiques. Le niveau contient un seul objet physique `SpawnSphere` ; les autres entrées déclenchent des téléportations vers des lieux enregistrés.
 
-Le projet s'appuie sur BeamNG.Earth et son système de génération géographique.
-
-Les éléments visés comprennent :
-
-Le relief et l'élévation du terrain.
-
-Les routes et les chemins.
-
-Les bâtiments.
-
-La végétation.
-
-Les textures et les images aériennes.
-
-Le chargement progressif des zones.
-
-Le système de cache pour conserver les données déjà téléchargées.
-
-Exploration
-
-L'objectif est de permettre au joueur de se déplacer librement sur le territoire, de découvrir différentes zones et de revenir dans les secteurs déjà visités.
-
-Cache
-
-Le projet prévoit un cache sans limite logicielle fixe : la quantité de données conservées dépend essentiellement de l'espace disponible sur le disque dur.
-
-Internet et mode hors ligne — évolution prévue
-
-L'objectif est de proposer trois modes :
-
-Automatique : détecter la disponibilité d'Internet et choisir le comportement adapté.
-
-En ligne : autoriser le téléchargement des données géographiques nécessaires.
-
-Hors ligne : utiliser les données déjà présentes dans le cache.
-
-Attention : le mode hors ligne ne peut pas créer des données géographiques qui n'ont jamais été téléchargées. Une zone non mise en cache peut donc être incomplète ou indisponible.
-
-Langue française
-
-L'objectif est de faire du français la langue principale de l'interface et des informations du mod.
-
-📦 État du développement
-
-Guadeloupe Earth est un projet expérimental en évolution.
-
-Les versions de développement ont notamment travaillé sur :
-
-L'adaptation de la zone géographique à la Guadeloupe.
-
-La configuration du cache.
-
-Le filtrage des tuiles géographiques.
-
-Le chargement des données.
-
-Le diagnostic des ralentissements et des blocages.
-
-L'amélioration de la stabilité.
-
-La version de diagnostic 0.3.1-dev a notamment permis d'analyser les performances et le fonctionnement du cache sur une configuration réelle.
-
-Les fonctionnalités annoncées comme objectifs ne sont pas nécessairement toutes disponibles dans la version actuelle.
-
-💻 Configuration et prérequis
-
-BeamNG.drive installé sur PC.
-
-Windows pour les scripts d'installation et de diagnostic fournis.
-
-Une connexion Internet recommandée pour télécharger les premières données géographiques.
-
-De l'espace disque pour le cache.
-
-Une configuration suffisamment performante pour gérer la génération du terrain et les éléments du monde.
-
-Les performances dépendent notamment du processeur, de la mémoire, de la carte graphique, du stockage et de la quantité de données à charger.
-
-🔧 Installation
-
-Les instructions définitives seront adaptées à chaque version publiée.
-
-Télécharger l'archive de la version souhaitée depuis la section Releases.
-
-Lire les instructions d'installation incluses dans l'archive.
-
-Installer le mod dans le répertoire prévu pour les mods BeamNG.drive.
-
-Lancer BeamNG.drive.
-
-Démarrer le serveur du mod si la version le nécessite.
-
-Consulter les instructions de la version pour commencer l'exploration.
-
-Important : les archives de développement et les versions destinées aux joueurs peuvent avoir des procédures différentes. Toujours utiliser les instructions fournies avec la version téléchargée.
-
-🐛 Signaler un problème
-
-Si tu rencontres un problème, ouvre une issue sur GitHub et indique :
-
-Ta version de BeamNG.drive.
-
-La version de Guadeloupe Earth.
-
-Ton processeur et ta carte graphique.
-
-La quantité de mémoire vive.
-
-La zone où le problème se produit.
-
-Les étapes permettant de reproduire le problème.
-
-Le journal de diagnostic, si disponible.
-
-Les rapports de bugs et les retours de performances sont particulièrement utiles pour améliorer le projet.
-
-🤝 Participer au projet
-
-Les contributions de la communauté sont les bienvenues :
-
-Tester les différentes zones de la Guadeloupe.
-
-Signaler les routes ou bâtiments manquants.
-
-Identifier les erreurs de terrain.
-
-Signaler les ralentissements et les blocages.
-
-Proposer des améliorations.
-
-Participer aux tests des nouvelles versions.
-
-Même un simple retour de joueur peut aider à améliorer le projet.
-
+Consultez [`GUADELOUPE_EARTH_PREVIEW.md`](GUADELOUPE_EARTH_PREVIEW.md) pour les notes de migration et les travaux restants. Pour diagnostiquer les ralentissements, utilisez `run_server_diagnostics.bat`, qui écrit `Guadeloupe-Earth-diagnostic.log` sur le Bureau.

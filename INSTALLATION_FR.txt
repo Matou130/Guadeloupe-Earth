@@ -1,0 +1,56 @@
+INSTALLATION — GUADELOUPE EARTH 0.3.1
+=====================================
+
+Prérequis
+---------
+- Windows 10/11 et BeamNG.drive.
+- Python 3.10 ou plus récent, avec « Add python.exe to PATH » activé.
+- Une connexion Internet est nécessaire lors de la première installation pour
+  télécharger les dépendances Python. Le jeu et les données déjà en cache
+  peuvent ensuite être utilisés hors ligne.
+
+Installation sous Windows
+-------------------------
+1. Extrayez tout le ZIP source dans un dossier permanent, par exemple
+   Documents\Guadeloupe Earth.
+2. Fermez BeamNG.drive.
+3. Lancez run_server.bat et laissez sa fenêtre ouverte.
+5. Démarrez BeamNG.drive, ouvrez Freeroam et sélectionnez le niveau
+   « Guadeloupe Earth ».
+
+Le fichier run_server.bat peut également lancer l’installation au premier
+démarrage si Python est déjà installé. Pour mettre le mod à jour, fermez le jeu,
+relancez install.py, puis redémarrez run_server.bat et BeamNG.drive.
+
+Choisir la connexion dans le jeu
+-------------------------------
+Dans Pause > Mods > Guadeloupe Earth > Monde, utilisez « Connexion Internet » :
+
+- Automatique : Internet est utilisé quand il est disponible ; le serveur
+  réessaie et utilise les données en cache lorsque les fournisseurs sont
+  injoignables.
+- En ligne : les téléchargements de données manquantes sont autorisés. En cas
+  de coupure, le contenu déjà en cache reste utilisable.
+- Hors ligne : aucune nouvelle requête de données n’est envoyée sur Internet ;
+  seuls les fichiers déjà présents sur cet ordinateur sont utilisés.
+
+Le choix est conservé entre les sessions. « Automatique » est le réglage par
+défaut. Hors ligne, un lieu jamais chargé auparavant peut être incomplet. Pour
+préparer une zone, ouvrez la carte et utilisez « Précharger une zone » ou
+« Précharger l’itinéraire » pendant que la connexion est disponible.
+
+Notes
+-----
+- Le serveur compagnon doit rester actif pendant la partie ; la fenêtre
+  run_server.bat ne doit pas être fermée.
+- L’installateur doit pouvoir télécharger les bibliothèques Python lors de la
+  première configuration. Les modes de connexion du jeu contrôlent ensuite les
+  téléchargements de données du monde.
+- Cette version est une préversion. Les données de relief, d’images et de routes
+  dépendent des sources et des caches disponibles ; tout l’archipel n’est pas
+  préinstallé dans le ZIP.
+- Si le niveau n’apparaît pas, vérifiez le dossier utilisateur choisi pendant
+  l’installation, puis redémarrez BeamNG.drive.
+
+Pour les détails sur la zone et les limites connues, consultez
+GUADELOUPE_EARTH_PREVIEW.md et README.md.
